@@ -1,2 +1,3 @@
 # debloat_mac
-Initial script to run for macOS developer setup.
+
+Short script for debloating a Mac from factory settings. Inteded to be used before adding configs.
