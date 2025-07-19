@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+# Script for debloating before installing tools:
+# - Safely deletes a few default apps
+# - Tones down Spotlight to only Applications folder
+# - Turns off recent apps in Dock
+
 # Bloatware apps not part of system to be deleted:
 BLOAT_APPS=(
   "/Applications/GarageBand.app"

@@ -1,7 +1,13 @@
-# debloat_mac
+# mac_setup
 
-Short script for a Mac from factory settings. Intended to be used before adding configs.
+Short script for a Mac from factory settings.
 
-- Safely deletes a few default apps
-- Tones down Spotlight to only Applications folder
-- Turns off recent apps in Dock
+To run:
+```shell
+xcode-select --install
+cd Desktop # or anywhere else you want
+git clone https://github.com/MAA-98/mac_setup
+cd mac_setup
+chmod +x debloat_mac.sh
+./debloat_mac.sh
+```
