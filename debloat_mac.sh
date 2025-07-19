@@ -26,6 +26,13 @@ for app in "${BLOAT_APPS[@]}"; do
   fi
 done
 
+# Deleting some files for GarageBand and Logic which are large and could be still be around
+echo "Removing GarageBand audio content to reclaim space..."
+sudo rm -rf "/Library/Application Support/GarageBand"
+sudo rm -rf "/Library/Application Support/Logic"
+sudo rm -rf "/Library/Audio/Apple Loops"
+echo "GarageBand audio content removed."
+
 echo "Deletion process complete."
 
 # Only allow Spotlight to index Applications: I only use it for opening apps
