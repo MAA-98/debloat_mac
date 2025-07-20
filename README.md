@@ -1,6 +1,6 @@
 # mac_setup
 
-Short setup scripts for a Mac from factory settings.
+Short setup scripts for a Mac with factory settings.
 
 Initial "debloating":
 ```shell
@@ -17,8 +17,15 @@ Download Homebrew from [official repo](https://brew.sh):
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Script `setup_mac.sh` copies `/dotfiles/` to home dir and symlinks `zsh` config files to home dir. In `/mac_setup/`:
+Script `setup_mac.sh` does:
+- copy `/dotfiles/` to home directory
+- symlinks `.zshrc` and `.zprofile` to home directory. 
+- installs `neovim` and `tmux` <~~ TODO
+
+In `/mac_setup/`:
 ```shell
 chmod +x setup_mac.sh
 ./setup_mac.sh
 ```
+
+The script will automatically restart and hence run `.zshrc`, which notices zsh plugins are missing and clones them from git.
