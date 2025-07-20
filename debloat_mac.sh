@@ -36,20 +36,39 @@ echo "GarageBand audio content removed."
 echo "Deletion process complete."
 
 # Only allow Spotlight to index Applications: I only use it for opening apps
-echo "Disabling Spotlight indexing globally..."
-sudo mdutil -a -i off
-echo "Enabling Spotlight indexing only for /Applications..."
-sudo mdutil -i on /Applications
-sudo mdutil -i on /System/Applications
-echo "Adding /Users and /System to Spotlight Privacy (exclude indexing)..."
-sudo defaults write /Library/Preferences/com.apple.Spotlight.plist Exclusions -array "/Users" "/Library" "/private"
+echo "Disabling Spotlight indexing, except for applications and directories."
+defaults write com.apple.Spotlight orderedItems -array \
+'{"enabled"=1;"name"="APPLICATIONS";}' \
+'{"enabled"=0;"name"="SYSTEM_PREFS";}' \
+'{"enabled"=0;"name"="DOCUMENTS";}' \
+'{"enabled"=1;"name"="DIRECTORIES";}' \
+'{"enabled"=0;"name"="PDF";}' \
+'{"enabled"=0;"name"="FONTS";}' \
+'{"enabled"=0;"name"="MESSAGES";}' \
+'{"enabled"=0;"name"="CONTACT";}' \
+'{"enabled"=0;"name"="EVENT_TODO";}' \
+'{"enabled"=0;"name"="IMAGES";}' \
+'{"enabled"=0;"name"="BOOKMARKS";}' \
+'{"enabled"=0;"name"="MUSIC";}' \
+'{"enabled"=0;"name"="MOVIES";}' \
+'{"enabled"=0;"name"="PRESENTATIONS";}' \
+'{"enabled"=0;"name"="SPREADSHEETS";}' \
+'{"enabled"=0;"name"="SOURCE";}' \
+'{"enabled"=0;"name"="MENU_DEFINITION";}' \
+'{"enabled"=0;"name"="MENU_OTHER";}' \
+'{"enabled"=0;"name"="MENU_CONVERSION";}' \
+'{"enabled"=0;"name"="MENU_EXPRESSION";}' \
+'{"enabled"=0;"name"="MENU_WEBSEARCH";}' \
+'{"enabled"=0;"name"="MENU_SPOTLIGHT_SUGGESTIONS";}'
+
+echo "Turning off Spotlight Suggestions."
+defaults write com.apple.SpotlightSuggestions.plist SuggestionsEnabled -bool false
+defaults write com.apple.SpotlightSuggestions.plist ContentSources -array
+
 echo "Restarting Spotlight indexing daemon..."
 sudo mdutil -E /
 sudo killall mds
-echo "Done. Spotlight now indexes only /Applications."
-mdutil -s /Applications
-mdutil -s /System/Applications
-mdutil -s /
+echo "Done."
 
 # Get rid of recent apps in the Dock
 echo "Disabling recent apps in Dock..."
