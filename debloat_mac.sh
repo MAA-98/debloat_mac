@@ -40,12 +40,16 @@ echo "Disabling Spotlight indexing globally..."
 sudo mdutil -a -i off
 echo "Enabling Spotlight indexing only for /Applications..."
 sudo mdutil -i on /Applications
+sudo mdutil -i on /System/Applications
 echo "Adding /Users and /System to Spotlight Privacy (exclude indexing)..."
-sudo defaults write /Library/Preferences/com.apple.Spotlight.plist Exclusions -array "/Users" "/System" "/Library" "/private"
+sudo defaults write /Library/Preferences/com.apple.Spotlight.plist Exclusions -array "/Users" "/Library" "/private"
 echo "Restarting Spotlight indexing daemon..."
+sudo mdutil -E /
 sudo killall mds
 echo "Done. Spotlight now indexes only /Applications."
-mdutil -sa
+mdutil -s /Applications
+mdutil -s /System/Applications
+mdutil -s /
 
 # Get rid of recent apps in the Dock
 echo "Disabling recent apps in Dock..."
