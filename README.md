@@ -33,7 +33,7 @@ Script `setup_mac.sh` does:
 - copy `/dotfiles/` to home directory
 - symlinks `.zshrc` and `.zprofile` to home directory. 
 - installs `neovim` and `tmux` <~~ TODO
-- deletes the files cloned from `mac_setup` git <~~ TODO
+- deletes the files cloned from `mac_setup` git repo in the first step <~~ TODO
 
 In `/mac_setup/`:
 ```shell
@@ -41,4 +41,4 @@ chmod +x setup_mac.sh
 ./setup_mac.sh
 ```
 
-The script will automatically restart and hence run `.zshrc`, which notices zsh plugins are missing and clones them from git.
+The script will automatically restart and hence run `.zshrc`, which notices zsh plugins are missing and clones them from official git repos.
