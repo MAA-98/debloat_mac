@@ -15,8 +15,8 @@
 test -f "$HOME/.my_secrets" && source "$HOME/.my_secrets" && [[ $- == *i* ]] && echo "[🎉 .my_secrets sourced]"
 
 # Tab completion (usually not needed on Macs)
-autoload -Uz compinit
-compinit
+# autoload -Uz compinit
+# compinit
 
 # Path for zsh plugins
 ZSH_PLUGIN_DIR="$HOME/dotfiles/plugins"

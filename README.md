@@ -22,18 +22,11 @@ chmod +x debloat_mac.sh
 
 ---
 
-Download Homebrew from [official repo](https://brew.sh):
-```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
----
-
 Script `setup_mac.sh` does:
 - copy `/dotfiles/` to home directory
 - symlinks `.zshrc` and `.zprofile` to home directory. 
-- installs `neovim` and `tmux` <~~ TODO
-- deletes the files cloned from `mac_setup` git repo in the first step <~~ TODO
+- creates ~/.my_secrets file and restricts permissions
+- deletes the files cloned from `mac_setup` git repo in the first step
 
 In `/mac_setup/`:
 ```shell
@@ -42,3 +35,13 @@ chmod +x setup_mac.sh
 ```
 
 The script will automatically restart and hence run `.zshrc`, which notices zsh plugins are missing and clones them from official git repos.
+
+---
+### Suggested Next Steps
+
+Download Homebrew from [official repo](https://brew.sh):
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Add API keys to ~/.my_secrets, login to GitHub and run your private scripts.

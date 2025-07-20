@@ -42,5 +42,29 @@ done
 
 echo "Finished creating symlinks."
 
+# Add .my_secrets file and chmod 600
+SECRETS_FILE="$HOME/.my_secrets"
+
+if [ ! -e "$SECRETS_FILE" ]; then
+  echo "Creating empty $SECRETS_FILE"
+  touch "$SECRETS_FILE"
+  chmod 600 "$SECRETS_FILE"
+else
+  echo "$SECRETS_FILE already exists, skipping creation."
+fi
+
+# Delete files/directories in the script directory to clean up
+cleanup_items=(debloat_mac.sh LICENSE README.md .git .gitignore setup_mac.sh dotfiles)
+
+SCRIPT_DIR="$(dirname "$0")"
+
+for item in "${cleanup_items[@]}"; do
+  target="$SCRIPT_DIR/$item"
+  if [ -e "$target" ] || [ -L "$target" ]; then
+    echo "Removing $target"
+    rm -rf "$target"
+  fi
+done
+
 echo "Restarting your shell to apply changes..."
 exec $SHELL -l
