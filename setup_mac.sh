@@ -41,3 +41,6 @@ for file in "${files[@]}"; do
 done
 
 echo "Finished creating symlinks."
+
+echo "Restarting your shell to apply changes..."
+exec $SHELL -l

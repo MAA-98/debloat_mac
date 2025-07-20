@@ -18,17 +18,41 @@ test -f "$HOME/.my_secrets" && source "$HOME/.my_secrets" && [[ $- == *i* ]] && 
 autoload -Uz compinit
 compinit
 
-# Auto-suggestions plugin:
-if [[ -f "$HOME/dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-    source "$HOME/dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-else
-    echo "[⚠️  zsh-autosuggestions plugin missing]"
-fi
+# Path for zsh plugins
+ZSH_PLUGIN_DIR="$HOME/dotfiles/plugins"
 
-# Syntax coloring plugin:
-# MUST BE SOURCED LAST apparently
-if [[ -f "$HOME/dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
-    source "$HOME/dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-else
-    echo "[⚠️  zsh-syntax-highlighting plugin missing]"
-fi
+# Function to clone if missing
+source_or_clone_plugin() {
+  local repo_url=$1
+  local plugin_dir_path=$2
+  local plugin_filepath=$3
+  
+  if [[ ! -f "$plugin_filepath" ]]; then
+    if [ -d "$plugin_dir_path" ]; then
+      echo "[🧹 Removing incomplete plugin dir...]"
+      rm -rf "$plugin_dir_path"
+    fi
+    echo "[⏳ Cloning plugin from $repo_url to $plugin_dir_path]"
+    git clone --depth=1 "$repo_url" "$plugin_dir_path"
+  fi
+  # Source if present
+  if [[ -f "$plugin_filepath" ]]; then
+    source "$plugin_filepath"
+  else
+    echo "[⚠️  zsh-autosuggestions plugin missing]"
+  fi
+}
+
+# ---- Auto-suggestions plugin ----
+ZSH_AUTOSUGGESTIONS_URL="https://github.com/zsh-users/zsh-autosuggestions.git"
+ZSH_AUTOSUGGESTIONS_DIR="$ZSH_PLUGIN_DIR/zsh-autosuggestions"
+ZSH_AUTOSUGGESTIONS_FILE="$ZSH_AUTOSUGGESTIONS_DIR/zsh-autosuggestions.zsh"
+
+source_or_clone_plugin "$ZSH_AUTOSUGGESTIONS_URL" "$ZSH_AUTOSUGGESTIONS_DIR" "$ZSH_AUTOSUGGESTIONS_FILE"
+
+# ---- Syntax Highlighting plugin ---- MUST BE SOURCED LAST apparently
+ZSH_SYNTAX_HIGHLIGHTING_URL="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+ZSH_SYNTAX_HIGHLIGHTING_DIR="$ZSH_PLUGIN_DIR/zsh-syntax-highlighting"
+ZSH_SYNTAX_HIGHLIGHTING_FILE="$ZSH_SYNTAX_HIGHLIGHTING_DIR/zsh-syntax-highlighting.zsh"
+
+source_or_clone_plugin "$ZSH_SYNTAX_HIGHLIGHTING_URL" "$ZSH_SYNTAX_HIGHLIGHTING_DIR" "$ZSH_SYNTAX_HIGHLIGHTING_FILE"
