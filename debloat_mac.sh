@@ -35,7 +35,7 @@ echo "GarageBand audio content removed."
 
 echo "Deletion process complete."
 
-# Only allow Spotlight to index Applications: I only use it for opening apps
+# Only allow Spotlight for apps and directories
 echo "Disabling Spotlight indexing, except for applications and directories."
 defaults write com.apple.Spotlight orderedItems -array \
 '{"enabled"=1;"name"="APPLICATIONS";}' \
@@ -61,6 +61,7 @@ defaults write com.apple.Spotlight orderedItems -array \
 '{"enabled"=0;"name"="MENU_WEBSEARCH";}' \
 '{"enabled"=0;"name"="MENU_SPOTLIGHT_SUGGESTIONS";}'
 
+# Get rid of Suggestions
 echo "Turning off Spotlight Suggestions."
 defaults write com.apple.SpotlightSuggestions.plist SuggestionsEnabled -bool false
 defaults write com.apple.SpotlightSuggestions.plist ContentSources -array
