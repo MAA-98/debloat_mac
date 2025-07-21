@@ -2,8 +2,10 @@
 
 set -e
 
-# Auto hide Dock
-defaults write com.apple.dock autohide -bool true; killall Dock
+# Auto hide Dock and quick show
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-time-modifier -float 0.1
+killall Dock
 
 DOTFILES_SRC="$(dirname "$0")/dotfiles"
 DOTFILES_DEST="$HOME/dotfiles"
