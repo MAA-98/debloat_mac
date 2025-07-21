@@ -23,7 +23,7 @@ chmod +x debloat_mac.sh
 ---
 
 Script `setup_mac.sh` does:
-- Auto-hide Dock
+- Auto-hide Dock and show animation quicker
 - copy `/dotfiles/` directory to home directory
 - symlinks `.zshrc` and `.zprofile` to home directory.
 - creates ~/.my_secrets file and restricts permissions
