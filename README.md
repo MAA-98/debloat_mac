@@ -23,8 +23,9 @@ chmod +x debloat_mac.sh
 ---
 
 Script `setup_mac.sh` does:
-- copy `/dotfiles/` to home directory
-- symlinks `.zshrc` and `.zprofile` to home directory. 
+- Auto-hide Dock
+- copy `/dotfiles/` directory to home directory
+- symlinks `.zshrc` and `.zprofile` to home directory.
 - creates ~/.my_secrets file and restricts permissions
 - deletes the files cloned from `mac_setup` git repo in the first step
 

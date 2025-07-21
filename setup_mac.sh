@@ -2,6 +2,9 @@
 
 set -e
 
+# Auto hide Dock
+defaults write com.apple.dock autohide -bool true; killall Dock
+
 DOTFILES_SRC="$(dirname "$0")/dotfiles"
 DOTFILES_DEST="$HOME/dotfiles"
 
