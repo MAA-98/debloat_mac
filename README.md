@@ -42,11 +42,16 @@ The script will automatically restart and hence run `.zshrc`, which notices zsh 
 
 #### System Settings
 For vim in macOS, easiest to rebind using System Settings GUI:
+
 For Caps Lock to Escape:
+
 System Settings>Keyboard>Keyboard Shortcuts…>Modifier Keys>Caps Lock Key>Escape
 
+
 For apps (e.g. Alacritty) to open new windows with cmd+n, not new tabs:
+
 For cmd+n opening new window rather than new tab:
+
 System Settings>Desktop & Dock>Windows - Prefer tabs when opening documents>Never
 
 #### Apps
