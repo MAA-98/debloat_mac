@@ -40,9 +40,22 @@ The script will automatically restart and hence run `.zshrc`, which notices zsh 
 ---
 ### Suggested Next Steps
 
+#### System Settings
+For vim in macOS, easiest to rebind using System Settings GUI:
+For Caps Lock to Escape:
+System Settings>Keyboard>Keyboard Shortcuts…>Modifier Keys>Caps Lock Key>Escape
+
+For apps (e.g. Alacritty) to open new windows with cmd+n, not new tabs:
+For cmd+n opening new window rather than new tab:
+System Settings>Desktop & Dock>Windows - Prefer tabs when opening documents>Never
+
+#### Apps
+
 Download Homebrew from [official repo](https://brew.sh):
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Add API keys to ~/.my_secrets, login to GitHub and run your private scripts.
+Login to GitHub and run your private scripts.
+
+Add API keys to ~/.my_secrets.
