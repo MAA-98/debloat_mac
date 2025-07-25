@@ -43,10 +43,10 @@ The script will automatically restart and hence run `.zshrc`, which notices zsh 
 #### System Settings
 
 For Caps Lock to Escape:
-System Settings>Keyboard>Keyboard Shortcuts…>Modifier Keys>Caps Lock Key>Escape
+*System Settings>Keyboard>Keyboard Shortcuts…>Modifier Keys>Caps Lock Key>Escape*
 
 For apps (e.g. Alacritty) to open new windows with cmd+n, not new tabs:
-System Settings>Desktop & Dock>Windows - Prefer tabs when opening documents>Never
+*System Settings>Desktop & Dock>Windows - Prefer tabs when opening documents>Never*
 
 #### Apps
 
